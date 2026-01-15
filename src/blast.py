@@ -12,7 +12,7 @@ def get_correspondence_by_blast(fpath):
                 length_ratio = float(int(line[-1]) / int(line[-2])) * 100
                 identity = float(line[2])
                 evalue = float(10)
-                print(evalue, identity)
+                print(seqid, dbid, evalue, identity)
                 if evalue <= 1e-10 and identity >= 95:
                     if seqid not in data_columns["SeqID"]:
                         data_columns["SeqID"].append(seqid)
