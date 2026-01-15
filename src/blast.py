@@ -9,7 +9,7 @@ def get_correspondence_by_blast(fpath):
                 line = line.split()
                 seqid = line[0].replace("rna-", "").replace("transcript:", "").replace("transcript-", "")
                 dbid = line[1].replace("rna-", "").replace("transcript:", "").replace("transcript-", "")
-                length_ratio = float(line[-1] / line[-2]) * 100
+                length_ratio = float(int(line[-1]) / int(line[-2])) * 100
                 identity = float(line[2])
                 evalue = float(10)
                 if evalue <= 1e-10 and identity >= 95:
