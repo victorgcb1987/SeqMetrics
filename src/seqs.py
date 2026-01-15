@@ -21,7 +21,7 @@ def seq_stats(fpath, kind="transcript"):
             data_columns["SeqLength"].append(seqLegth)
             data_columns["Stop Chars (%)"].append(stop_percentage)
             if kind == "transcript":
-                data_columns("Masked Nucl (%)").append(masked_percentage)
+                data_columns["Masked Nucl (%)"].append(masked_percentage)
     return pd.DataFrame.from_dict(data_columns)
     
 
