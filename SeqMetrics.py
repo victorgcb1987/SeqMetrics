@@ -26,7 +26,7 @@ def main():
     #         print(kind, key)
     #         print(dataset)
     correspondece = get_correspondence_by_blast(Path(argv[5]))
-    print(correspondece)
+    print(correspondece.loc[correspondece['IsFragmented'].isin(True)])
 
     
 
