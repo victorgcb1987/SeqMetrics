@@ -11,7 +11,7 @@ def seq_stats(fpath, kind="transcript"):
     with open(fpath) as fhand:
         records = SeqIO.parse(fhand, "fasta")
         for record in records:
-            record_id = record.id.replace("rna_", "").replace("transcript:", "")
+            record_id = record.id.replace("rna-", "").replace("transcript:", "").replace("transcript-", "")
             seqLegth = len(record.seq)
             masked = sum(1 for char in record.seq if char.islower())
             masked_percentage = float(masked/ seqLegth) * 100
