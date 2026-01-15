@@ -25,7 +25,7 @@ def main():
     #     for kind, dataset in values.items():
     #         print(kind, key)
     #         print(dataset)
-    correspondece = get_correspondence_by_blast(Path[argv[5]])
+    correspondece = get_correspondence_by_blast(Path(argv[5]))
     print(correspondece)
 
     
