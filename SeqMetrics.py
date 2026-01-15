@@ -19,8 +19,11 @@ def main():
         for kind, fpath in values.items():
             stats = seq_stats(fpath, kind=kind)
             datasets[key][kind] = stats
-    print(datasets)
-
+    
+    for key, values in datasets.items():
+        for kind, dataset in values.items():
+            print(kind, key)
+            print(dataset)
 
     
 

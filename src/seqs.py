@@ -14,8 +14,8 @@ def seq_stats(fpath, kind="transcript"):
             record_id = record.id
             seqLegth = len(record.seq)
             masked = sum(1 for char in record.seq if char.islower())
-            masked_percentage = float(masked/ seqLegth)
-            stop_chars = sum(1 for char in record.seq if char == stop_symbol)
+            masked_percentage = float(masked/ seqLegth) * 100
+            stop_chars = sum(1 for char in record.seq if char == stop_symbol) * 100
             stop_percentage = float(stop_chars/seqLegth)
             data_columns["SeqID"].append(record_id)
             data_columns["SeqLength"].append(seqLegth)
