@@ -11,8 +11,7 @@ def get_correspondence_by_blast(fpath):
                 dbid = line[1].replace("rna-", "").replace("transcript:", "").replace("transcript-", "")
                 length_ratio = float(int(line[-1]) / int(line[-2])) * 100
                 identity = float(line[2])
-                evalue = float(10)
-                print(seqid, dbid, evalue, identity)
+                evalue = float(line[10])
                 if evalue <= 1e-10 and identity >= 95:
                     if seqid not in data_columns["SeqID"]:
                         data_columns["SeqID"].append(seqid)
