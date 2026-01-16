@@ -30,7 +30,7 @@ def main():
     correspondece = get_correspondence_by_blast(Path(argv[5]))
     merged_df = pd.merge(datasets["B"]["transcript"], datasets["B"]["protein"], on="SeqID")
     merged_df = pd.merge(merged_df, correspondece, on="SeqID")
-    merged_df.drop(columns=["Masked Nucl (%)"])
+    merged_df = merged_df.drop(columns=["Masked Nucl (%)"])
     print(list(merged_df.columns.values))
 
     
