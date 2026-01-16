@@ -21,10 +21,10 @@ def main():
             stats = seq_stats(fpath, kind=kind)
             datasets[key][kind] = stats
     
-    # for key, values in datasets.items():
-    #     for kind, dataset in values.items():
-    #         print(kind, key)
-    #         print(dataset)
+    for key, values in datasets.items():
+        for kind, dataset in values.items():
+            print(kind, key)
+            print(dataset)
     correspondece = get_correspondence_by_blast(Path(argv[5]))
     print(correspondece[correspondece['IsFragmented'] == "True"])
 
