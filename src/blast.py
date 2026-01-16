@@ -12,14 +12,14 @@ def get_correspondence_by_blast(fpath):
                 length_ratio = float(int(line[-1]) / int(line[-2])) * 100
                 identity = float(line[2])
                 evalue = float(line[10])
-                if evalue <= 1e-10 and identity >= 95:
-                    if seqid not in data_columns["SeqID"]:
-                        data_columns["SeqID"].append(seqid)
-                        data_columns["DB_ID"].append(dbid)
-                        data_columns["Length Ratio (%)"].append(length_ratio)
-                        data_columns["IsFragmented"].append("False")
-                    else:
-                        data_columns["IsFragmented"][-1] = "True"
+                #if evalue <= 1e-10 and identity >= 95:
+                if seqid not in data_columns["SeqID"]:
+                    data_columns["SeqID"].append(seqid)
+                    data_columns["DB_ID"].append(dbid)
+                    data_columns["Length Ratio (%)"].append(length_ratio)
+                    data_columns["IsFragmented"].append("False")
+                else:
+                    data_columns["IsFragmented"][-1] = "True"
     return pd.DataFrame.from_dict(data_columns)
                 
 
