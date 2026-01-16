@@ -27,13 +27,24 @@ def main():
         for kind, dataset in values.items():
             print(kind, key)
             print(dataset)
-    print(datasets["A"]["transcript"]["Stop Chars transcript (%)"].unique())
-    print(datasets["A"]["protein"]["Stop Chars protein (%)"].unique())
+   
     correspondece = get_correspondence_by_blast(Path(argv[5]))
     merged_df = pd.merge(datasets["B"]["transcript"], datasets["B"]["protein"], on="SeqID")
     merged_df = pd.merge(merged_df, correspondece, on="SeqID")
     merged_df = merged_df.drop(columns=["Masked Nucl (%)"])
-    print(list(merged_df.columns.values))
+    refseq_trans_df = datasets["A"]["transcript"]
+    refseq_prot_df = datasets["B"]["protein"]
+    refseq_trans_df = refseq_trans_df.drop(columns=["Stop Chars transcript (%)"])
+    refseq_prot_df = refseq_prot_df.drop(columns=["Stop Chars protein (%)"])
+    merged_df = merged_df.rename(columns={"SeqID": "Ensembl_ID", "Match_ID": "RefSeq_ID"})
+    refseq_prot_df = refseq_prot_df.rename(columns={"SeqID": "RefSeq_ID"})
+    refseq_trans_df = refseq_trans_df.rename(columns={"SeqID": "RefSeq_ID"})
+    merged_df = pd.merge(merged_df, refseq_trans_df, on="RefSeq_ID")
+    merged_df = pd.merge(merged_df, refseq_prot_df, on="RefSeq_ID")
+    print(merged_df)
+
+
+
 
     
 
