@@ -33,7 +33,7 @@ def main():
     merged_df = pd.merge(merged_df, correspondece, on="SeqID")
     merged_df = merged_df.drop(columns=["Masked Nucl (%)"])
     refseq_trans_df = datasets["A"]["transcript"]
-    refseq_prot_df = datasets["B"]["protein"]
+    refseq_prot_df = datasets["A"]["protein"]
     refseq_trans_df = refseq_trans_df.drop(columns=["Stop Chars transcript (%)"])
     refseq_prot_df = refseq_prot_df.drop(columns=["Stop Chars protein (%)"])
     merged_df = merged_df.rename(columns={"SeqID": "Ensembl_ID", "Match_ID": "RefSeq_ID"})
