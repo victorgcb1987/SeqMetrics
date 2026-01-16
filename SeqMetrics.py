@@ -28,7 +28,7 @@ def main():
             print(kind, key)
             print(dataset)
     correspondece = get_correspondence_by_blast(Path(argv[5]))
-    merged_df = pd.merge(datasets["B"]["transcript"], datasets["B"]["protein"])
+    merged_df = pd.merge(datasets["B"]["transcript"], datasets["B"]["protein"] on="SeqID")
     print(merged_df)
     print(correspondece[correspondece['IsFragmented'] == "True"])
 
