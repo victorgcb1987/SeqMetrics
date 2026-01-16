@@ -36,9 +36,11 @@ def main():
     refseq_prot_df = datasets["A"]["protein"]
     refseq_trans_df = refseq_trans_df.drop(columns=["Stop Chars transcript (%)"])
     refseq_prot_df = refseq_prot_df.drop(columns=["Stop Chars protein (%)"])
-    merged_df = merged_df.rename(columns={"SeqID": "Ensembl_ID", "Match_ID": "RefSeq_ID"})
-    refseq_prot_df = refseq_prot_df.rename(columns={"SeqID": "RefSeq_ID"})
-    refseq_trans_df = refseq_trans_df.rename(columns={"SeqID": "RefSeq_ID"})
+    merged_df = merged_df.rename(columns={"SeqID": "Ensembl_ID", "Match_ID": "RefSeq_ID",
+                                          "SeqLength_transcript": "SeqLength_transcript_Ensembl",
+                                         "SeqLength_protein": " SeqLength_protein_Ensembl"})
+    refseq_prot_df = refseq_prot_df.rename(columns={"SeqID": "RefSeq_ID", "SeqLength_protein": "SeqLength_protein_RefSeq"})
+    refseq_trans_df = refseq_trans_df.rename(columns={"SeqID": "RefSeq_ID", "SeqLength_transcript": "SeqLength_transcript_RefSeq"})
     print(merged_df)
     print(refseq_prot_df)
     print(refseq_trans_df)
