@@ -47,6 +47,7 @@ def main():
     merged_df = pd.merge(merged_df, refseq_trans_df, on="RefSeq_ID")
     merged_df = pd.merge(merged_df, refseq_prot_df, on="RefSeq_ID")
     print(merged_df)
+    merged_df.to_csv("Results.tsv", sep="\t", index=False)
 
 
 
