@@ -1,3 +1,5 @@
+import pandas as pd
+
 from pathlib import Path
 from sys import argv
 
@@ -26,6 +28,8 @@ def main():
             print(kind, key)
             print(dataset)
     correspondece = get_correspondence_by_blast(Path(argv[5]))
+    merged_df = pd.merge(datasets["B"]["transcript"], datasets["B"]["protein"])
+    print(merged_df)
     print(correspondece[correspondece['IsFragmented'] == "True"])
 
     
