@@ -3,7 +3,7 @@ import pandas as pd
 from Bio import SeqIO
 
 def seq_stats(fpath, kind="transcript"):
-    data_columns = {"SeqID": [], "SeqLength_{}".format(kind): [], "Stop Chars (%)": []}
+    data_columns = {"SeqID": [], "SeqLength_{}".format(kind): [], "Stop Chars {} (%)".format(kind): []}
     if kind == "transcript":
         data_columns.update({"Masked Nucl (%)": []})
     stop_symbol = "N" if kind == "transcript" else "X"
@@ -19,7 +19,7 @@ def seq_stats(fpath, kind="transcript"):
             stop_percentage = float(stop_chars/seqLegth)
             data_columns["SeqID"].append(record_id)
             data_columns["SeqLength_{}".format(kind)].append(seqLegth)
-            data_columns["Stop Chars (%)"].append(stop_percentage)
+            data_columns["Stop Chars {} (%)".format(kind)].append(stop_percentage)
             if kind == "transcript":
                 data_columns["Masked Nucl (%)"].append(masked_percentage)
     return pd.DataFrame.from_dict(data_columns)
