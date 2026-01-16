@@ -31,7 +31,7 @@ def main():
     merged_df = pd.merge(datasets["B"]["transcript"], datasets["B"]["protein"], on="SeqID")
     merged_df = pd.merge(merged_df, correspondece, on="SeqID")
     print(merged_df)
-    print(correspondece[correspondece['IsFragmented'] == "True"])
+    print(correspondece[correspondece['IsQueryFragmented'] == "True"])
 
     
 
