@@ -2,7 +2,7 @@ import pandas as pd
 
 
 def get_correspondence_by_blast(fpath):
-    data_columns = {"SeqID": [], "Match_ID":[], "Length Ratio (%)":[], "IsQueryFragmented":[]}
+    data_columns = {"SeqID": [], "Match_ID":[], "Length Ratio (%)":[]}
     with open(fpath) as fhand:
         for line in fhand:
             if line:
@@ -18,8 +18,6 @@ def get_correspondence_by_blast(fpath):
                         data_columns["Match_ID"].append(dbid)
                         data_columns["Length Ratio (%)"].append(length_ratio)
                         data_columns["IsQueryFragmented"].append("False")
-                    else:
-                        data_columns["IsQueryFragmented"][-1] = "True"
     return pd.DataFrame.from_dict(data_columns)
                 
 
