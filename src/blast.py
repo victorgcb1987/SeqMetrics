@@ -17,7 +17,6 @@ def get_correspondence_by_blast(fpath):
                         data_columns["SeqID"].append(seqid)
                         data_columns["Match_ID"].append(dbid)
                         data_columns["Length Ratio (%)"].append(length_ratio)
-                        data_columns["IsQueryFragmented"].append("False")
     return pd.DataFrame.from_dict(data_columns)
                 
 
